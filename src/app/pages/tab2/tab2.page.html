@@ -1,6 +1,8 @@
-<ion-header no-border>
-  <ion-toolbar color="dark">
-    <ion-title>
+<ion-header >
+    
+  <ion-toolbar color="primary">
+     <ion-title>
+        <img src="http://www.eatlogos.com/art_logos/png/vector_art_logo_colourful_lotus.png" width="80px">
       Noticias Mundiales
     </ion-title>
   </ion-toolbar>
@@ -10,11 +12,20 @@
 
 </ion-segment-button>
   </ion-segment>
-
-
-
 </ion-header>
 
-<ion-content color="dark">
-
-</ion-content>
+<ion-content >
+    <app-noticias [articulos]="articulos"></app-noticias>
+    <ion-list>
+      <ion-item *ngFor="let item of data; let i=index">
+        <ion-label>
+          Item{{i+1}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="Datos($event)">
+      <ion-infinite-scroll-content loadingSpinner="circles" loadingText="Cargando...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+  
